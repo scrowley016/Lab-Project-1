@@ -15,12 +15,21 @@ class Character {
 
   def levelUp(player1:Character):Int = {
     var pExp=player1.exp
-    if (pExp>=50){
-      level=level+1
-      pExp=pExp-50
+    while (pExp >= 100) {
+      level = level + 1
+      pExp = pExp - 100
+
+      atk=atk+1
+      defense=defense+2
+      mAtk=mAtk+1
+      mDefense=mDefense+2
+      maxHP=maxHP+10
+      maxMag=maxMag+10
+
     }
     level
   }
+
 
   def takeDamage(input:Int): Int={
     curHP=curHP-input
@@ -35,12 +44,12 @@ class Character {
     curMag
 
   }
-  def living(player1:Character):Boolean={
-    val pHP=player1.curHP
-    if(pHP<0) {
-      dead = true
+  def death(player1:Character):Boolean= {
+    val pHP = player1.curHP
+    if (pHP==0) {
+      player1.dead=true
     }
-    dead
+    player1.dead
   }
   def physicalAttack(player1: Character): Int ={
     player1.takeDamage(atk)
