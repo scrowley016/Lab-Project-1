@@ -1,10 +1,10 @@
 package Battle
 
-class Character {
-  var atk:Int=5
-  var defense:Int=5
-  var mAtk:Int=10
-  var mDefense:Int=10
+abstract class Character(var a: Int,var b: Int,var c: Int,var d: Int) {
+  var atk:Int=a
+  var defense:Int=b
+  var mAtk:Int=c
+  var mDefense:Int=d
   var maxHP:Int=100
   var curHP: Int = 50
   var maxMag:Int=100
@@ -19,10 +19,10 @@ class Character {
       level = level + 1
       pExp = pExp - 100
 
-      atk=atk+1
-      defense=defense+2
-      mAtk=mAtk+1
-      mDefense=mDefense+2
+      atk=atk+2
+      defense=defense+1
+      mAtk=mAtk+2
+      mDefense=mDefense+1
       maxHP=maxHP+10
       maxMag=maxMag+10
 
@@ -62,5 +62,18 @@ class Character {
 
   }
 
+  def defenseAttack(player1:Character):Int= {
+    player1.defense = defense * 2
+    defense
+  }
+
+  def battle_options(): List[String] = {
+    val options = List[String]()
+    options
+  }
+
+  def takeAction(words:String,player1:Character):Unit={
+    val bat_o=battle_options()
+  }
 }
 

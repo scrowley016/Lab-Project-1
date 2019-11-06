@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .playerParty {
+            display: grid;
+            background-color:#911BA3;
+            text-align: center;
+            font-size: 26px;
+            grid-column: 1 ;
+            grid-row: 1 / 5;
+
+        }
+        .enemyParty {
+            display: grid;
+            background-color:#911BA3;
+            text-align: center;
+            font-size: 26px;
+            grid-column: 3;
+            grid-row: 1 / 5;
+        }
+        .battleSpace {
+            display: grid;
+            background-color: #6D97D3;
+            text-align: center;
+            font-size: 26px;
+            grid-column: 2;
+            grid-row: 1 / 5;
+        }
+        .nameSpace{
+            display: grid;
+            background-color:#911BA3;
+            text-align: center;
+            font-size: 26px;
+            grid-column: 1/4;
+            grid-row: 5/6;
+        }
+
+        .button {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            background-color:#CCCC00;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+        }
+        .button:active{
+            background-color: #FFA500;
+        }
+        .buttonDEAD {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            background-color: #F4442E;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+        }
+        .buttonACTIVE {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            background-color:#379E39;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+        }
+        .buttonACTIVE:active{
+            background-color: #A2FAA3;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Battle Party</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body >
+<script src="game.js"></script>
+
+<div class="wrapper">
+    <div class="playerParty">Your Party
+    <button class="buttonACTIVE",onclick=update()> Wizard<br>Shannon<br>current Hp:100 </button>
+    <button class="button",onclick=update()> Warrior<br>Matt<br>current Hp: 100 </button>
+    <button class="button",onclick=update()>Spy<br>Bruce<br>current Hp: 100 </button>
+    <button class="button",onclick=update()> Princess <br>Norman<br>current Hp: 100 </button></div>
+
+    <div class="battleSpace">BATTLE!
+        <button id= pp class="button",onclick="powerPunch()">Power Punch</button>
+        <button id= rk class="button" ,onclick="roundhouseKick()">Roundhouse Kick</button>
+        <button id=tr class="button",onclick="throwaRock()">Throw a Rock</button>
+        <button id=hl class="button",onclick="heal()">Heal</button></div>
+
+
+    <div class="enemyParty">Enemy Party
+        <button id= 'player1' class="button" ,onclick= update() > Wizard <br>Caroline <br>current Hp: 100 </button>
+        <button id= 'player2' class="button" ,onclick=update() >Warrior<br>Tom<br>current Hp: 100 </button>
+        <button id= 'player3' class="button",onclick=update() >Princess<br>Olivia<br>current Hp: 100 </button>
+        <button id='player4' class="buttonDEAD" ,onclick=update() disabled >Spy<br>Vada<br>current Hp: 0 </button></div>
+
+
+    <div id= turn class="nameSpace">Its your turn:  <output>Shannon</output><br> Select a Battle Move and an Enemy to Attack
+
+    <p id="demo"> </p>
+        <script>
+            document.getElementById("demo").innerHTML = hp;
+
+        </script>
+
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
